@@ -1,0 +1,107 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #222;
+}
+
+    ul li {
+        display: block;
+        position: relative;
+        float: left;
+        background: #222;
+    }
+
+li ul {
+    display: none;
+}
+
+ul li a {
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #fff;
+}
+
+    ul li a:hover {
+        background: #2c3e50;
+    }
+
+li:hover > ul {
+    display: block;
+    position: absolute;
+}
+
+li:hover li {
+    float: none;
+}
+
+li:hover a {
+    background: #000;
+}
+
+li:hover li a:hover {
+    background: #2c3e50;
+}
+
+.main-navigation li ul li {
+    border-top: 0;
+}
+
+ul ul ul {
+    left: 100%;
+    top: 0;
+}
+
+ul:before,
+ul:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+ul:after {
+    clear: both;
+}
+
+form {
+    margin-top: 25px;
+}
+
+.form-group {
+    /*text-align: center;*/
+}
+
+.btn-password {
+    margin-left: 323px;
+}
+#RememberMe{
+    margin-left:0px;
+}
+.checkbox{
+    text-align:left;
+}

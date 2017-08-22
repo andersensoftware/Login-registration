@@ -1,0 +1,46 @@
+﻿<ul class="main-navigation">
+
+    <li>
+        <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+        <ul>
+            <li>
+                <a href="#">Customer Register</a>
+                <ul>
+                    <li>
+                        <a href="#">Statistics</a>
+                        <ul>
+                            <li><a href="#">Customer info</a></li>
+                            <li><a href="#">Historik</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Prices</a>
+                        <ul>
+                            <li><a href="#">Customer</a></li>
+                            <li><a href="#">Project</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">User Settings</a>
+                <ul>
+                    <li><a href="@Url.Action("ChangePassword", "UserSettings")">Change Password</a></li>
+                    <li><a href="#">User info</a></li>
+                    <li><a href="#">Absence</a></li>
+                </ul>
+            </li>
+            @*@if (@ToDoWeb.Core.CurrentContext.User().account_type == (Int32)ToDoWeb.Core.CurrentContext.AuthorizeFlags.Administrator)
+            {*@
+                <li>
+                    <a href="#">Admin</a>
+                    <ul>
+                        <li><a href="@Url.Action("UserControl", "Administrator")">User Control</a></li>
+                        <li><a href="#">File Setup</a></li>
+                        <li><a href="#">System Settings</a></li>
+                    </ul>
+                </li>
+            @*}*@
+        </ul>
+    </li>
+</ul>

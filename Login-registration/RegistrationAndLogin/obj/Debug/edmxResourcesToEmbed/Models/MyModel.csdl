@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MyDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cryptokeys" EntityType="MyDatabaseModel.cryptokey" />
+    <EntitySet Name="Email_Templates" EntityType="MyDatabaseModel.Email_Templates" />
+    <EntitySet Name="Users" EntityType="MyDatabaseModel.User" />
+    <AssociationSet Name="FK__cryptokey__UserI__72C60C4A" Association="MyDatabaseModel.FK__cryptokey__UserI__72C60C4A">
+      <End Role="User" EntitySet="Users" />
+      <End Role="cryptokey" EntitySet="cryptokeys" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="cryptokey">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="cryptone" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="crypttwo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="crypttree" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="MyDatabaseModel.FK__cryptokey__UserI__72C60C4A" FromRole="cryptokey" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Email_Templates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="E_Subject" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="E_Body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+    <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="cryptokeys" Relationship="MyDatabaseModel.FK__cryptokey__UserI__72C60C4A" FromRole="User" ToRole="cryptokey" />
+    <Property Name="Failed_Logins" Type="Int32" Nullable="false" />
+    <Property Name="Locked" Type="Boolean" Nullable="false" />
+    <Property Name="TempPasswordSet" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__cryptokey__UserI__72C60C4A">
+    <End Type="MyDatabaseModel.User" Role="User" Multiplicity="1" />
+    <End Type="MyDatabaseModel.cryptokey" Role="cryptokey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="cryptokey">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
